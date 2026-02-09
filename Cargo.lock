@@ -2030,6 +2030,7 @@ dependencies = [
  "pumpkin-protocol",
  "pumpkin-util",
  "pumpkin-world",
+ "pumpkin-world-new",
  "rand",
  "rsa",
  "rustc-hash",
@@ -2206,6 +2207,56 @@ dependencies = [
  "tokio",
  "tokio-util",
  "uuid",
+]
+
+[[package]]
+name = "pumpkin-world-new"
+version = "0.1.0-dev+1.21.11"
+dependencies = [
+ "bitflags",
+ "bytes",
+ "criterion",
+ "crossbeam",
+ "crossfire",
+ "dashmap",
+ "enum_dispatch",
+ "env_logger",
+ "flate2",
+ "futures",
+ "itertools 0.14.0",
+ "log",
+ "lz4-java-wrc",
+ "num-derive",
+ "num-traits",
+ "num_cpus",
+ "pumpkin-config",
+ "pumpkin-data",
+ "pumpkin-nbt",
+ "pumpkin-util",
+ "rand",
+ "rustc-hash",
+ "ruzstd",
+ "serde",
+ "serde_json",
+ "serde_json5",
+ "sha2 0.11.0-rc.4",
+ "slotmap",
+ "temp-dir",
+ "thiserror",
+ "tokio",
+ "tokio-util",
+ "uuid",
+]
+
+[[package]]
+name = "pumpkin-world-test"
+version = "0.1.0-dev+1.21.11"
+dependencies = [
+ "pumpkin",
+ "pumpkin-config",
+ "pumpkin-data",
+ "pumpkin-util",
+ "pumpkin-world-new",
 ]
 
 [[package]]

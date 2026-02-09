@@ -14,10 +14,10 @@ use tokio::{
 
 use crate::{
     chunk::{
-        ChunkReadingError, ChunkWritingError,
+        format::errors::{ChunkReadingError, ChunkWritingError},
         io::{BoxFuture, Dirtiable},
     },
-    level::LevelFolder,
+    level::folder::LevelFolder,
 };
 
 use super::{ChunkSerializer, FileIO, LoadedData};

@@ -155,6 +155,10 @@ impl Iterator for OutwardIterator {
 /// Aka Block Position
 pub struct BlockPos(pub Vector3<i32>);
 
+#[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
+/// Aka Chunk Position
+pub struct ChunkPos(pub Vector2<i32>);
+
 impl BlockPos {
     pub const ZERO: Self = Self::new(0, 0, 0);
 

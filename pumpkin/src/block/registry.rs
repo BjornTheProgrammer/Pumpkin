@@ -99,6 +99,7 @@ use pumpkin_world::BlockStateId;
 use pumpkin_world::item::ItemStack;
 use pumpkin_world::world::{BlockAccessor, BlockFlags, BlockRegistryExt};
 use rustc_hash::FxHashMap;
+use std::pin::Pin;
 use std::sync::Arc;
 use tokio::sync::Mutex;
 
@@ -332,6 +333,63 @@ impl BlockRegistryExt for BlockRegistry {
                 None,
                 None,
                 block_accessor,
+                None,
+                block,
+                state,
+                block_pos,
+                None,
+                None,
+            )
+            .await
+        })
+    }
+}
+
+struct BlockAccessorAdapter<'a>(&'a dyn pumpkin_world_new::registry::BlockAccessor);
+impl pumpkin_world::world::BlockAccessor for BlockAccessorAdapter<'_> {
+    fn get_block<'a>(
+        &'a self,
+        position: &'a BlockPos,
+    ) -> Pin<Box<dyn Future<Output = &'static Block> + Send + 'a>> {
+        self.0.get_block(position)
+    }
+
+    fn get_block_state<'a>(
+        &'a self,
+        position: &'a BlockPos,
+    ) -> Pin<Box<dyn Future<Output = &'static BlockState> + Send + 'a>> {
+        self.0.get_block_state(position)
+    }
+
+    fn get_block_state_id<'a>(
+        &'a self,
+        position: &'a BlockPos,
+    ) -> Pin<Box<dyn Future<Output = BlockStateId> + Send + 'a>> {
+        self.0.get_block_state_id(position)
+    }
+
+    fn get_block_and_state<'a>(
+        &'a self,
+        position: &'a BlockPos,
+    ) -> Pin<Box<dyn Future<Output = (&'static Block, &'static BlockState)> + Send + 'a>> {
+        self.0.get_block_and_state(position)
+    }
+}
+
+impl pumpkin_world_new::registry::BlockRegistryExt for BlockRegistry {
+    fn can_place_at(
+        &self,
+        block: &pumpkin_data::Block,
+        state: &BlockState,
+        block_accessor: &dyn pumpkin_world_new::registry::BlockAccessor,
+        block_pos: &BlockPos,
+    ) -> bool {
+        let block_accessor = BlockAccessorAdapter(block_accessor);
+        futures::executor::block_on(async move {
+            self.can_place_at(
+                None,
+                None,
+                &block_accessor,
                 None,
                 block,
                 state,

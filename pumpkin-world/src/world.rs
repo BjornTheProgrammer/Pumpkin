@@ -2,7 +2,8 @@ use std::pin::Pin;
 use std::sync::Arc;
 
 use crate::block::entities::BlockEntity;
-use crate::{BlockStateId, inventory::Inventory};
+use crate::inventory::Inventory;
+use crate::registry::BlockStateId;
 use bitflags::bitflags;
 use pumpkin_data::entity::EntityType;
 use pumpkin_data::sound::{Sound, SoundCategory};

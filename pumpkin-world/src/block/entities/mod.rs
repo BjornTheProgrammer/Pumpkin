@@ -22,8 +22,9 @@ use crate::block::entities::jukebox::JukeboxBlockEntity;
 use crate::block::entities::mob_spawner::MobSpawnerBlockEntity;
 use crate::block::entities::shulker_box::ShulkerBoxBlockEntity;
 use crate::block::entities::smoker::SmokerBlockEntity;
+use crate::registry::BlockStateId;
 use crate::{
-    BlockStateId, block::entities::chiseled_bookshelf::ChiseledBookshelfBlockEntity,
+    block::entities::chiseled_bookshelf::ChiseledBookshelfBlockEntity,
     block::entities::dropper::DropperBlockEntity, inventory::Inventory, world::SimpleWorld,
 };
 

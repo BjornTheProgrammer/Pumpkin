@@ -61,21 +61,6 @@ temp-dir.workspace = true
 # Deserialize NaN and Inf
 serde_json5.workspace = true
 
-[[bench]]
-name = "chunk"
-harness = false
-
-#[[bench]]
-#name = "chunk_io"
-#harness = false
-
-[[bench]]
-name = "chunk_gen"
-harness = false
-
-[[bench]]
-name = "noise_router"
-harness = false
 
 [features]
 tokio_taskdump = []

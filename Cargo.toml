@@ -8,6 +8,7 @@ members = [
     "pumpkin-macros/",
     "pumpkin-protocol/",
     "pumpkin-world",
+    "pumpkin-world-test",
     "pumpkin/",
     "pumpkin-data",
 ]
@@ -44,7 +45,7 @@ significant_drop_in_scrutinee = "deny"
 print_stdout = "deny"
 print_stderr = "deny"
 
-# Expected/Allowed 
+# Expected/Allowed
 cargo_common_metadata = "allow"
 cast_precision_loss = "allow"
 multiple_crate_versions = "allow"

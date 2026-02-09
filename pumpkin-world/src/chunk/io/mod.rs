@@ -3,8 +3,10 @@ use std::{error, pin::Pin};
 use bytes::Bytes;
 use pumpkin_util::math::vector2::Vector2;
 
-use super::{ChunkReadingError, ChunkWritingError};
-use crate::level::LevelFolder;
+use crate::{
+    chunk::format::errors::{ChunkReadingError, ChunkWritingError},
+    level::folder::LevelFolder,
+};
 
 pub mod file_manager;
 

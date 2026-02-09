@@ -1,14 +1,13 @@
-pub mod entities;
-pub mod state;
-pub mod viewer;
-
 use std::collections::HashMap;
 
 use pumpkin_data::{Block, BlockState, chunk_gen_settings::BlockBlueprint};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-pub use state::RawBlockState;
 
-use crate::BlockStateId;
+pub mod entities;
+pub mod state;
+pub mod viewer;
+
+use crate::registry::BlockStateId;
 
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
@@ -84,20 +83,4 @@ pub fn to_state_id_from_blueprint(print: &BlockBlueprint) -> BlockStateId {
 #[must_use]
 pub fn to_state_from_blueprint(print: &BlockBlueprint) -> &'static BlockState {
     BlockState::from_id(to_state_id_from_blueprint(print))
-}
-
-#[cfg(test)]
-mod test {
-    use pumpkin_data::Block;
-
-    use crate::chunk::palette::BLOCK_NETWORK_MAX_BITS;
-
-    #[test]
-    fn proper_network_bits_per_entry() {
-        let id_to_test = 1 << BLOCK_NETWORK_MAX_BITS;
-        assert!(
-            Block::from_state_id(id_to_test) == &Block::AIR,
-            "We need to update our constants!"
-        );
-    }
 }

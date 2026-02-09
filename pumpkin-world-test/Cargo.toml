@@ -1,0 +1,12 @@
+[package]
+name = "pumpkin-world-test"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+pumpkin = { path = "../pumpkin" }
+pumpkin-util.workspace = true
+pumpkin-config.workspace = true
+pumpkin-data.workspace = true
+pumpkin-world-new = { path = "../pumpkin-world-new" }
